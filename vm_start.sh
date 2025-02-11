@@ -3,8 +3,8 @@
 VM_NAME="archlinux"
 MEMORY="10240"
 CPU="host"
-ISO="/home/ursus/Projects/arch_install/archlinux-2025.02.01-x86_64.iso"
-DISK="/home/ursus/Projects/arch_install/archlinux.qcow2"
+ISO=$HOME"/Projects/arch-factory/archlinux-2025.02.01-x86_64.iso"
+DISK=$HOME"/Projects/arch-factory/archlinux.qcow2"
 SIZE="20G"
 BOOT_FROM_ISO="true"
 
@@ -107,13 +107,3 @@ echo "Starting ${VM_NAME} VM"
 ${QEMU_COMMAND} ${QEMU_OPTIONS}
 
 echo "VM stopped"
-
-# qemu-system-x86_64 \
-#   -enable-kvm \
-#   -m 2048 \
-#   -cpu host \
-#   -cdrom  \
-#   -drive file=,if=virtio \
-#   -net nic,model=virtio \
-#   -net user \
-#   -boot d

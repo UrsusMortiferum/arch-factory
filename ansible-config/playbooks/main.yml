@@ -1,0 +1,25 @@
+---
+- name: Initial setup for local machine
+  hosts: local_machines
+  become: true
+  vars:
+    test_package: fastfetch
+
+  tasks:
+    - name: Ensure pacman cache is updated
+      community.general.pacman:
+        update_cache: yes
+      register: pacman_update_result
+
+    - name: Install a test package
+      community.general.pacman:
+        name: "{{ test_package }}"
+        state: present
+
+    - name: Run a test command and display output
+      command: echo "Ansible run successfully on {{ ansible_hostname }}"
+      register: test_command_output
+
+    - name: Display test command output
+      debug:
+        var: test_command_output.stdout
